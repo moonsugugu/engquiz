@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "quizResult": {
+      "title": "Quiz Result",
+      "description": "Submitted test result from a student",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "maxLength": 128,
+          "description": "Firebase Auth anonymous UID of student"
+        },
+        "studentClass": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Student class (e.g., 3-1)"
+        },
+        "studentNumber": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Student number (e.g., 14)"
+        },
+        "studentName": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Student name"
+        },
+        "score": {
+          "type": "number",
+          "description": "Score out of 100 or total points"
+        },
+        "totalQuestions": {
+          "type": "number",
+          "description": "Total question count (5)"
+        },
+        "answers": {
+          "type": "array",
+          "description": "Chosen option index (0-3) for 5 questions"
+        },
+        "wrongQuestions": {
+          "type": "array",
+          "description": "List of question indices that were answered incorrectly"
+        },
+        "submittedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO timestamp string when the quiz was submitted"
+        }
+      },
+      "required": [
+        "userId",
+        "studentClass",
+        "studentNumber",
+        "studentName",
+        "score",
+        "totalQuestions",
+        "answers",
+        "wrongQuestions",
+        "submittedAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/quiz_results/{resultId}": {
+      "schema": "quizResult",
+      "description": "Collection of submitted elementary English quiz results"
+    }
+  }
+}
